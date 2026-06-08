@@ -35,4 +35,14 @@ def reset_object_estimate(
     done_y = (wheel_y < max_y) and (wheel_y > min_y)
     done_height = (wheel_height > min_height)
     done = done_x and done_y and done_height
-    return not done
+
+
+    inside_bounds = (
+        (wheel_x < max_x)
+        & (wheel_x > min_x)
+        & (wheel_y < max_y)
+        & (wheel_y > min_y)
+        & (wheel_height > min_height)
+    )
+
+    return ~inside_bounds
